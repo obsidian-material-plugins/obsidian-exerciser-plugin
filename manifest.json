@@ -1,0 +1,10 @@
+{
+  "id": "obsidian-exerciser-plugin",
+  "name": "Exerciser",
+  "version": "0.1.0",
+  "minAppVersion": "1.5.0",
+  "description": "Create and preview read-only programming exercise projects, then copy them to a local working folder.",
+  "author": "Obsidian Material Plugins",
+  "authorUrl": "https://github.com/obsidian-material-plugins",
+  "isDesktopOnly": true
+}
