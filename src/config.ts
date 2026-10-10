@@ -37,7 +37,7 @@ const strings = (value: unknown): string[] =>
 
 export const normalizeExerciseName = (value: unknown): string | null => {
 	const name = string(value);
-	return name && /^[A-Za-z0-9][A-Za-z0-9._-]*$/.test(name) && name !== '.'
+	return name && /^[A-Za-z0-9_][A-Za-z0-9._-]*$/.test(name)
 		? name
 		: null;
 };

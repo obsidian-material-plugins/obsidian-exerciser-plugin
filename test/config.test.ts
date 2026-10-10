@@ -59,6 +59,20 @@ annotations:
 		expect(parseFence('exercise: hello\nentrypoint: ../../secret')).toBeNull();
 	});
 
+	it('accepts underscore-prefixed template exercises without accepting paths', () => {
+		expect(normalizeExerciseName('_template-exercise-1')).toBe('_template-exercise-1');
+		expect(parseFence('exercise: _template-exercise-1')).toEqual({
+			exercise: '_template-exercise-1',
+			layout: 'ide',
+			entrypoint: undefined,
+			'word-wrap': true,
+		});
+		expect(normalizeExerciseName('.hidden')).toBeNull();
+		expect(normalizeExerciseName('../escape')).toBeNull();
+		expect(normalizeExerciseName('nested/exercise')).toBeNull();
+		expect(normalizeExerciseName('C:\\exercise')).toBeNull();
+	});
+
 	it('uses 50 MB for absent or malformed root settings', () => {
 		expect(parsePreviewLimit('')).toBe(DEFAULT_PREVIEW_LIMIT_BYTES);
 		expect(parsePreviewLimit('---\nexercise-preview-size-limit: enormous\n---')).toBe(DEFAULT_PREVIEW_LIMIT_BYTES);
