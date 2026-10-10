@@ -10,6 +10,7 @@
 - Keep `src/main.ts` focused on lifecycle and command registration; put file, copy, parser, and UI behavior in dedicated modules.
 - The **Create new exercise here…** command and editor context-menu item must generate files, `.exercise.yml`, and the fenced `exercise` block without requiring hand-written YAML.
 - Never overwrite an existing exercise or accept absolute/traversing paths inside an exercise.
+- Exercise names are one directory segment: the first character may be alphanumeric or `_`, the rest may also contain `.`, `_`, or `-`; keep leading dots and all path separators invalid.
 - Missing or malformed `exercise-preview-size-limit` in root `index.md` falls back to 50 MB.
 - `.exercise.yml` is authoring metadata: never preview it or include it in copied projects.
 - `exclude-from-quartz` is also omitted from external copies; `hide-from-preview` is still copied.
