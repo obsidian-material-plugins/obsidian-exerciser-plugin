@@ -1,6 +1,6 @@
 {
   "name": "obsidian-exerciser-plugin",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Create, manage, preview, and copy programming exercises in Obsidian.",
   "main": "main.js",
   "type": "module",
@@ -12,7 +12,12 @@
     "test": "vitest run",
     "check": "npm run build && npm run lint && npm test"
   },
-  "keywords": ["obsidian", "exercise", "course-material", "code-viewer"],
+  "keywords": [
+    "obsidian",
+    "exercise",
+    "course-material",
+    "code-viewer"
+  ],
   "license": "MIT",
   "repository": {
     "type": "git",
