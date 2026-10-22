@@ -1,6 +1,6 @@
 {
   "name": "obsidian-exerciser-plugin",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Create, manage, preview, and copy programming exercises in Obsidian.",
   "main": "main.js",
   "type": "module",
@@ -22,6 +22,11 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/obsidian-material-plugins/obsidian-exerciser-plugin.git"
+  },
+  "pluginContracts": {
+    "exercise-fence": 1,
+    "exercise-manifest": 1,
+    "exercise-preview-limit": 1
   },
   "dependencies": {
     "minimatch": "^10.1.1",

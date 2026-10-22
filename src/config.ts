@@ -142,6 +142,10 @@ const annotations = (value: unknown): ExerciseAnnotation[] => {
 
 export const parseManifest = (source: string): ExerciseManifest => {
 	const parsed = object(YAML.parse(source));
+	if (parsed.version !== 1) {
+		const version = parsed.version === undefined ? 'missing' : JSON.stringify(parsed.version);
+		throw new Error(`Unsupported exercise manifest version ${version}; expected version 1.`);
+	}
 	const manifest = DEFAULT_MANIFEST();
 	const files = object(parsed.files);
 	const preview = object(parsed.preview);

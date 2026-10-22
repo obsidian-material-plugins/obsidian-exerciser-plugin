@@ -6,7 +6,8 @@
 
 ## Contracts
 
-- Keep `manifest.json` ID `obsidian-exerciser-plugin` stable and `isDesktopOnly: true`.
+- Keep `manifest.json` ID `exerciser` stable and `isDesktopOnly: true`.
+- Implement only the declared `exercise-fence/v1`, `exercise-manifest/v1`, and `exercise-preview-limit/v1` contracts from `obsidian-material-plugins/plugin-contracts`. Reject unsupported manifest versions instead of silently interpreting them as version 1.
 - Keep `src/main.ts` focused on lifecycle and command registration; put file, copy, parser, and UI behavior in dedicated modules.
 - The **Create new exercise here…** command and editor context-menu item must generate files, `.exercise.yml`, and the fenced `exercise` block without requiring hand-written YAML.
 - Never overwrite an existing exercise or accept absolute/traversing paths inside an exercise.
