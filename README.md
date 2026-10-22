@@ -104,7 +104,9 @@ npm install
 npm run check
 ```
 
-`npm run build` produces the release-only `main.js`. Install `main.js`, `manifest.json`, and `styles.css` in `<vault>/.obsidian/plugins/obsidian-exerciser-plugin/` for manual testing. Tests, including the authoring integration test, remain in this repository.
+The fence, manifest, and preview-limit formats are versioned in the shared [plugin contract catalog](https://github.com/obsidian-material-plugins/plugin-contracts). Unsupported `.exercise.yml` versions fail visibly so a newer contract is never interpreted as version 1.
+
+`npm run build` produces the release-only `main.js`. Install `main.js`, `manifest.json`, and `styles.css` in `<vault>/.obsidian/plugins/exerciser/` for manual testing. Tests, including the authoring integration test, remain in this repository.
 
 ## License
 

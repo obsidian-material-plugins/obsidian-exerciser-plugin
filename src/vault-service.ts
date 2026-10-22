@@ -51,11 +51,8 @@ const matches = (relative: string, patterns: string[]) =>
 
 export const loadManifest = async (app: App, root: string): Promise<ExerciseManifest> => {
 	const manifestPath = normalizePath(`${root}/${MANIFEST_FILE}`);
-	try {
-		return parseManifest(await app.vault.adapter.read(manifestPath));
-	} catch {
-		return DEFAULT_MANIFEST();
-	}
+	if (!(await app.vault.adapter.exists(manifestPath))) return DEFAULT_MANIFEST();
+	return parseManifest(await app.vault.adapter.read(manifestPath));
 };
 
 export const getPreviewLimit = async (app: App) => {

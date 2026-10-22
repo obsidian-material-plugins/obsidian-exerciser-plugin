@@ -78,4 +78,9 @@ annotations:
 		expect(parsePreviewLimit('---\nexercise-preview-size-limit: enormous\n---')).toBe(DEFAULT_PREVIEW_LIMIT_BYTES);
 		expect(parsePreviewLimit('---\nexercise-preview-size-limit: 2 MB\n---')).toBe(2 * 1024 * 1024);
 	});
+
+	it('rejects missing and unsupported manifest versions', () => {
+		expect(() => parseManifest('files: {}')).toThrow('version missing');
+		expect(() => parseManifest('version: 2\nfiles: {}')).toThrow('version 2');
+	});
 });
