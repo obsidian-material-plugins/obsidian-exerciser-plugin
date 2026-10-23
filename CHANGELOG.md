@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.1
+
+- Replace the inherited 0BSD template license with the project's declared MIT license.
+
 ## 0.2.0
 
 - Adopt the public Obsidian plugin ID `exerciser` for the first registry submission.

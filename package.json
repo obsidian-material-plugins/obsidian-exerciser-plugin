@@ -1,6 +1,6 @@
 {
   "name": "obsidian-exerciser-plugin",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Create, manage, preview, and copy programming exercises in Obsidian.",
   "main": "main.js",
   "type": "module",
