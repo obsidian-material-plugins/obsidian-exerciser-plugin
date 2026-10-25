@@ -207,7 +207,19 @@ class ExerciseViewerChild extends MarkdownRenderChild {
 	private async render() {
 		this.containerEl.empty();
 		this.containerEl.addClass('obsidian-exerciser-viewer', `layout-${this.fence.layout}`);
-		this.exercise = await loadExercise(this.host.app, this.fence.exercise);
+		try {
+			this.exercise = await loadExercise(this.host.app, this.fence.exercise);
+		} catch (error) {
+			const state = this.containerEl.createDiv('exerciser-state');
+			state.createEl('strong', { text: 'Exercise preview could not load' });
+			state.createEl('p', {
+				text: error instanceof Error ? error.message : String(error),
+			});
+			state.createEl('button', { text: 'Retry' }).addEventListener('click', () => {
+				void this.render();
+			});
+			return;
+		}
 		if (!this.exercise) {
 			const state = this.containerEl.createDiv('exerciser-state');
 			state.createEl('p', { text: 'Exercise folder not found.' });

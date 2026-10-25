@@ -13,6 +13,7 @@ import {
 	stringifyManifest,
 } from './config';
 import type { ExerciseCreationSpec, ExerciseManifest, ViewerFile } from './types';
+import { globalSettingsNotePath } from './settings-note';
 
 const textExtensions = new Set([
 	'c', 'cc', 'cpp', 'cs', 'css', 'csv', 'go', 'h', 'hpp', 'html', 'java', 'js', 'json', 'kt',
@@ -56,8 +57,20 @@ export const loadManifest = async (app: App, root: string): Promise<ExerciseMani
 };
 
 export const getPreviewLimit = async (app: App) => {
+	const conventionPath = '.obsidian-to-quartz-workspace.json';
+	let globalNote: string;
 	try {
-		return parsePreviewLimit(await app.vault.adapter.read('index.md'));
+		const convention = await app.vault.adapter.exists(conventionPath)
+			? JSON.parse(await app.vault.adapter.read(conventionPath)) as unknown
+			: null;
+		globalNote = globalSettingsNotePath(convention);
+	} catch (error) {
+		throw new Error(
+			`Check ${conventionPath}: ${error instanceof Error ? error.message : String(error)}`,
+		);
+	}
+	try {
+		return parsePreviewLimit(await app.vault.adapter.read(globalNote));
 	} catch {
 		return DEFAULT_PREVIEW_LIMIT_BYTES;
 	}

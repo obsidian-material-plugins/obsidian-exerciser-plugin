@@ -93,7 +93,7 @@ Authors normally do not edit either YAML document: the creation workflow generat
 
 ## Preview size
 
-The root `content/index.md` may define `exercise-preview-size-limit` as a positive byte count or a value such as `25 MB`. Missing, invalid, or malformed values fall back to **50 MB**. A manifest can deliberately bypass the limit for one exercise.
+The global settings note may define `exercise-preview-size-limit` as a positive byte count or a value such as `25 MB`. The portable `book-structure/v2` record selects its root filename; without that record, the plugin reads `index.md`. This setting is global-only. Missing, invalid, or malformed values fall back to **50 MB**. A manifest can deliberately bypass the limit for one exercise.
 
 ## Development
 

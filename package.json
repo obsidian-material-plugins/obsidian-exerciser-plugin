@@ -24,9 +24,10 @@
     "url": "https://github.com/obsidian-material-plugins/obsidian-exerciser-plugin.git"
   },
   "pluginContracts": {
+    "book-structure": 2,
     "exercise-fence": 1,
     "exercise-manifest": 1,
-    "exercise-preview-limit": 1
+    "exercise-preview-limit": 2
   },
   "dependencies": {
     "minimatch": "^10.1.1",
