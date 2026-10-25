@@ -7,12 +7,12 @@
 ## Contracts
 
 - Keep `manifest.json` ID `exerciser` stable and `isDesktopOnly: true`.
-- Implement only the declared `exercise-fence/v1`, `exercise-manifest/v1`, and `exercise-preview-limit/v1` contracts from `obsidian-material-plugins/plugin-contracts`. Reject unsupported manifest versions instead of silently interpreting them as version 1.
+- Implement the declared `book-structure/v2`, `exercise-fence/v1`, `exercise-manifest/v1`, and `exercise-preview-limit/v2` contracts from `obsidian-material-plugins/plugin-contracts`. Reject unsupported manifest versions instead of silently interpreting them as version 1.
 - Keep `src/main.ts` focused on lifecycle and command registration; put file, copy, parser, and UI behavior in dedicated modules.
 - The **Create new exercise here…** command and editor context-menu item must generate files, `.exercise.yml`, and the fenced `exercise` block without requiring hand-written YAML.
 - Never overwrite an existing exercise or accept absolute/traversing paths inside an exercise.
 - Exercise names are one directory segment: the first character may be alphanumeric or `_`, the rest may also contain `.`, `_`, or `-`; keep leading dots and all path separators invalid.
-- Missing or malformed `exercise-preview-size-limit` in root `index.md` falls back to 50 MB.
+- Read the global settings-note basename from `book-structure/v2` when its portable record exists; otherwise use root `index.md`. Missing or malformed `exercise-preview-size-limit` falls back to 50 MB. This property is global-only.
 - `.exercise.yml` is authoring metadata: never preview it or include it in copied projects.
 - `exclude-from-quartz` is also omitted from external copies; `hide-from-preview` is still copied.
 - Store the remembered external destination below `Vault.configDir`, add only its exact `.gitignore` rule, and never persist it in normal plugin data.
