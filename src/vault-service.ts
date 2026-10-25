@@ -58,10 +58,17 @@ export const loadManifest = async (app: App, root: string): Promise<ExerciseMani
 
 export const getPreviewLimit = async (app: App) => {
 	const conventionPath = '.obsidian-to-quartz-workspace.json';
-	const convention = await app.vault.adapter.exists(conventionPath)
-		? JSON.parse(await app.vault.adapter.read(conventionPath)) as unknown
-		: null;
-	const globalNote = globalSettingsNotePath(convention);
+	let globalNote: string;
+	try {
+		const convention = await app.vault.adapter.exists(conventionPath)
+			? JSON.parse(await app.vault.adapter.read(conventionPath)) as unknown
+			: null;
+		globalNote = globalSettingsNotePath(convention);
+	} catch (error) {
+		throw new Error(
+			`Check ${conventionPath}: ${error instanceof Error ? error.message : String(error)}`,
+		);
+	}
 	try {
 		return parsePreviewLimit(await app.vault.adapter.read(globalNote));
 	} catch {
